@@ -46,6 +46,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
     const [isEdit, setIsEdit] = useState(document ? false : true)
     const editDocumentById = useDocumentStore(st => st.editDocumentById)
     const createDocument = useDocumentStore(st => st.createDocument)
+    const delDocumentById = useDocumentStore(st => st.delDocumentById)
     const [keyword, setKeyword] = useState('')
     const navigate = useNavigate()
     const backurl = '/documents'
@@ -67,6 +68,14 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                 ? confirm('Seguro que desea cancelar la edicion?') && navigate(backurl)
                 : navigate(backurl)
             : confirm('Seguro que desea cancelar la creacion?') && navigate(backurl)
+    }
+
+    function handleDelete() {
+        if (document && confirm('Esta seguro que desea eliminar el documento?. Se eliminara todos los datos')) {
+            delDocumentById(document.id)
+            navigate(backurl)
+        }
+
     }
 
     function toggleEditFields() {
@@ -220,7 +229,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                 fileId = createDocument(document)
                 console.log(newDocumentData)
                 navigate(`/document/${fileId}`)
-                toast({ title: "Se creo un nuevo producto." })
+                toast({ title: "Se creo un nuevo Documento." })
             }
 
             await saveFileToDexie(fileId, selectedFile)
@@ -275,13 +284,19 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
 
             <div className="grid grid-cols-2 gap-3">
                 <div className="w-full mx-auto">
-                    {preview && (
-                        <iframe
-                            src={preview}
-                            title="Vista previa PDF"
-                            className="w-full h-[530px] rounded-sm"
-                        ></iframe>
-                    )}
+                    {preview
+                        ? (
+                            <iframe
+                                src={preview}
+                                title="Vista previa PDF"
+                                className="w-full h-[530px] rounded-sm"
+                            ></iframe>
+                        )
+                        : (
+                            <div>Aun no se subio ningun PDF</div>
+                        )
+
+                    }
                 </div>
 
                 <div className="grid grid-cols-2 w-full">
@@ -290,23 +305,23 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                             <Card x-chunk="dashboard-07-chunk-0">
                                 <CardHeader>
                                     <CardTitle className="flex justify-between">
-                                        Document Details
+                                        Detalles del Documento
                                         <div className="hidden items-center gap-2 md:ml-auto md:flex">
                                             {isEdit
                                                 ? (
                                                     <>
                                                         <Button variant="outline" size="sm" type='button' onClick={document ? toggleEditFields : backProducts}>
-                                                            Discard
+                                                            Cancelar
                                                         </Button>
                                                         <Button size="sm" type='submit'>
-                                                            Save Product
+                                                            Guardar
                                                         </Button>
                                                     </>
                                                 )
                                                 : (
                                                     <>
                                                         <Button variant='ghost' size="sm" type='button' onClick={toggleEditFields}>
-                                                            Edit
+                                                            Editar
                                                         </Button>
                                                     </>
                                                 )
@@ -316,10 +331,11 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                 </CardHeader>
                                 <CardContent className="flex flex-col gap-7">
                                     <div>
-                                        <label>Title</label>
+                                        <label>Nombre del Archivo</label>
                                         <div className="flex justify-between items-center">
                                             <Input
                                                 id="title"
+                                                name="title"
                                                 value={documentData.title}
                                                 className='disabled:cursor-default my-1'
                                                 disabled={!isEdit}
@@ -327,6 +343,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                             />
 
                                         </div>
+                                        {/* <p className="text-muted-foreground text-sm">Puede modificar el nombre segun su conveniencia</p> */}
                                         {
                                             isEdit && (
 
@@ -339,12 +356,11 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                                         onChange={handleFileChange}
                                                     />
 
-
-                                                    <label htmlFor="file-input" className='cursor-pointer flex gap-1'>
-                                                        <FileText /> {`${documentData.title}.pdf`}
+                                                    <label htmlFor="file-input" className='cursor-pointer flex gap-1 hover:underline'>
+                                                        <FileText /> {document ? `${documentData.title}.pdf` : '(Selecione un archivo)'}
                                                     </label>
-                                                    <p className="text-muted-foreground flex items-center">
-                                                        Click <ArrowUp className="w-4 h-4 mx-1" /> para subir o actualizar el archivo PDF
+                                                    <p className="text-muted-foreground flex items-center text-sm">
+                                                        Click <ArrowUp className="w-4 h-4 mx-1" /> para subir o actualizar el archivo PDF.
                                                     </p>
                                                 </div>
                                             )
@@ -353,7 +369,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                     </div>
 
                                     <div>
-                                        <label>Abstract</label>
+                                        <label className="flex gap-1 items-center">Resumen <p className="text-muted-foreground text-sm">(opcional)</p></label>
                                         <Textarea
                                             id='abstract'
                                             value={documentData.abstract}
@@ -366,7 +382,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                     <div className="flex justify-between">
 
                                         <div className="w-5/12">
-                                            <label>Fecha de Expiracion</label>
+                                            <label>Fecha</label>
                                             <SelectDate
                                                 className="w-full my-1"
                                                 date={documentData.date}
@@ -377,7 +393,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                         </div>
 
                                         <div className="w-5/12">
-                                            <label>Type</label>
+                                            <label>Tipo</label>
                                             <SelectReady
                                                 className="w-full my-1"
                                                 id='type'
@@ -398,22 +414,22 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                         <Card x-chunk="dashboard-07-chunk-0">
                             <CardHeader>
                                 <CardTitle>
-                                    To Search
+                                    Datos de Busqueda
                                 </CardTitle>
                                 <CardDescription>
-                                    Add some features that help you to find this document
+                                    Añada algunas referencias que faciliten la busqueda de este documento
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="grid grid-cols-1 gap-7">
                                 <div>
                                     <form onSubmit={addKeyword}>
-                                        <label className="font-semibold">Keywords</label>
+                                        <label className="font-semibold">Palabras clave / Referencias</label>
                                         <Input
                                             id="keyword"
                                             value={keyword}
                                             className='disabled:cursor-default my-1 w-9/12'
                                             onChange={handleOnChange}
-                                            placeholder="add keyword"
+                                            placeholder="Digite y luego presione enter"
                                         />
                                         <button type='submit' className="hidden" />
                                     </form>
@@ -433,22 +449,19 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
 
                                 <div>
                                     <div className="relative">
-                                        <label className="font-semibold">Persons in Document</label>
+                                        <label className="font-semibold">Personas Mencionadas en el Documento</label>
 
-                                        <div className={`absolute w-12/12 bottom-12 -left-1 bg-black rounded flex flex-col gap-1 ${personsFiltered.length !== 0 ? 'border' : ''}`}>
+                                        <div className={`absolute w-12/12 min-w-96 bottom-12 -left-0 bg-black rounded flex flex-col gap-1 ${personsFiltered.length !== 0 ? 'border' : ''}`}>
+                                            {/* <div className="font-semibold flex justify-between p-2">Nombre <p>DNI</p></div> */}
+
                                             {
                                                 personsFiltered.map(person => (
-                                                    <div key={person.id}>
-                                                        {
-                                                            person && (
-                                                                <div className="flex gap-1 justify-between text-sm hover:cursor-pointer hover:bg-slate-500 p-2" onClick={() => addPersonId(person.id)}>
-                                                                    <p>{`${person.name} ${person.paternalSurname} ${person.maternalSurname}`}</p>
-                                                                    <span>{person.dni}</span>
-                                                                </div>
-                                                            )
-
-                                                        }
-                                                    </div>
+                                                    person && (
+                                                        <div className="flex gap-1 justify-between text-sm hover:cursor-pointer hover:bg-accent p-2" onClick={() => addPersonId(person.id)}>
+                                                            <p>{`${person.name} ${person.paternalSurname} ${person.maternalSurname}`}</p>
+                                                            <span>{person.dni}</span>
+                                                        </div>
+                                                    )
                                                 ))
                                             }
                                         </div>
@@ -458,21 +471,21 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                                 id="searchPerson"
                                                 value={searchPerson}
                                                 className='disabled:cursor-default my-1 w-10/12'
-                                                placeholder="type to search"
+                                                placeholder="Digite para buscar y añadir a una persona"
                                                 onChange={handleOnChange}
                                             />
                                             <button hidden type='submit' />
 
                                             <Popover>
                                                 <PopoverTrigger asChild>
-                                                    <Button variant="outline">New</Button>
+                                                    <Button variant="outline">Nuevo</Button>
                                                 </PopoverTrigger>
                                                 <PopoverContent className="w-96">
                                                     <div className="grid gap-4">
                                                         <div className="space-y-2">
                                                             <h4 className="font-medium leading-none">Nueva Persona</h4>
                                                             <p className="text-sm text-muted-foreground">
-                                                                añada una nueva persona si no esta en el buscador
+                                                                Añada una nueva persona si no esta en el buscador
                                                             </p>
                                                         </div>
                                                         <form className="grid gap-2" onSubmit={handleOnSubmitP}>
@@ -513,7 +526,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                                                     onChange={handleOnChangeP}
                                                                 />
                                                             </div>
-                                                            <Button type='submit'>Save & Add</Button>
+                                                            <Button type='submit'>Guardar y Añadir</Button>
                                                         </form>
                                                     </div>
                                                 </PopoverContent>
@@ -543,6 +556,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                         </Card>
                     </section>
 
+                    {document && <Button className="my-2 w-7/12" variant={'destructive'} onClick={handleDelete}>Eliminar Documento</Button>}
                 </div >
             </div>
 

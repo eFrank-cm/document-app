@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { persist, PersistStorage } from 'zustand/middleware'
 import { Document, DocumentWithId } from "../types";
-import documentsJSON from './../../public/documents.json'
-import { PersonId, DocumentType } from "../types"
+// import documentsJSON from './../../public/documents.json'
+// import { PersonId, DocumentType } from "../types"
 
 // ---------------------------------------------- SERIALIZAR ----------------------------------------------
-const documentsData: DocumentWithId[] = documentsJSON.map(document => ({
-    ...document,
-    date: new Date(document.date),
-    type: document.type as DocumentType,
-    peopleInDoc: document.peopleInDoc as PersonId[]
-}))
+// const documentsData: DocumentWithId[] = documentsJSON.map(document => ({
+//     ...document,
+//     date: new Date(document.date),
+//     type: document.type as DocumentType,
+//     peopleInDoc: document.peopleInDoc as PersonId[]
+// }))
 
 // ---------------------------------------------- STORE ----------------------------------------------
 const customStore: PersistStorage<State> = {
@@ -35,13 +35,14 @@ interface State {
     documents: DocumentWithId[],
     getDocumentById: (id: string) => DocumentWithId | undefined,
     editDocumentById: (id: string, data: Document) => void,
-    createDocument: (newDocument: Document) => string
+    createDocument: (newDocument: Document) => string,
+    delDocumentById: (id: string) => void
 }
 
 export const useDocumentStore = create<State>()(
     persist(
         (set, get) => ({
-            documents: documentsData,
+            documents: [],
 
             createDocument: (newDocument) => {
                 const id = String(Math.floor(Math.random() * 100))
@@ -59,7 +60,9 @@ export const useDocumentStore = create<State>()(
                 })
             }),
 
-            getDocumentById: (id) => get().documents.find(doc => doc.id === id)
+            getDocumentById: (id) => get().documents.find(doc => doc.id === id),
+
+            delDocumentById: (id) => set({ documents: get().documents.filter(doc => doc.id !== id) })
         })
         , {
             name: "___documents__",

@@ -24,16 +24,16 @@ export const SearchLocation = () => {
     const colDef: ColumnDef<DocumentWithId>[] = [
         {
             accessorKey: 'title',
-            header: ({ column }) => <ColumnHeader column={column} title="Title" />
+            header: ({ column }) => <ColumnHeader column={column} title="Nombre del Archivo" />
         },
-        {
-            accessorKey: 'type',
-            header: "Type",
-            cell: ({ row }) => <Badge>{row.original.type}</Badge>
-        },
+        // {
+        //     accessorKey: 'type',
+        //     header: "Type",
+        //     cell: ({ row }) => <Badge>{row.original.type}</Badge>
+        // },
         {
             accessorKey: 'keywords',
-            header: 'Keywords',
+            header: 'Palabras Clave / Referencias',
             cell: ({ row }) => {
                 return (
                     <div className="flex flex-wrap gap-1">
@@ -47,7 +47,7 @@ export const SearchLocation = () => {
         },
         {
             accessorKey: 'peopleInDoc',
-            header: 'People mentioned',
+            header: 'Personas Mencionadas',
             cell: ({ row }) => {
                 const peopleInDoc = row.original.peopleInDoc.map(personId => getPersonById(personId))
                 return (

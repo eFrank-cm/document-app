@@ -7,14 +7,14 @@ import { User } from "../types";
 import { useUserStore } from "../store/userStore";
 
 const admin: User = {
-    username: 'User Admin',
+    username: 'Admin',
     email: 'admin@gmail.com',
     password: '123456',
     type: 'admin',
 }
 
 const normal: User = {
-    username: 'User Normal',
+    username: 'User',
     email: 'normal@gmail.com',
     password: '123456',
     type: 'normal',
@@ -58,16 +58,16 @@ export const LoginPage = () => {
             <section className="mt-28">
                 <Card className="mx-auto max-w-sm">
                     <CardHeader>
-                        <CardTitle className="text-2xl">Login</CardTitle>
+                        <CardTitle className="text-2xl">Iniciar Sesion</CardTitle>
                         <CardDescription>
-                            Enter your email below to login to your account
+                            Ingrese su correo y contraseña para iniciar sesion
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleOnSubmit}>
                             <div className="grid gap-4">
                                 <div className="grid gap-2">
-                                    <label htmlFor="email">Email</label>
+                                    <label htmlFor="email">Correo Electronico</label>
                                     <Input
                                         id="email"
                                         type="email"
@@ -79,7 +79,7 @@ export const LoginPage = () => {
                                 </div>
                                 <div className="grid gap-2">
                                     <div className="flex items-center">
-                                        <label htmlFor="password">Password</label>
+                                        <label htmlFor="password">Contraseña</label>
                                     </div>
                                     <Input
                                         id="password"
@@ -90,14 +90,12 @@ export const LoginPage = () => {
                                     />
                                 </div>
                                 <Button type="submit" className="w-full">
-                                    Login
+                                    Iniciar Sesion
                                 </Button>
                             </div>
                             <div className="mt-4 text-center text-sm">
-                                Don&apos;t have an account?{" "}
-                                <a href="#" className="underline">
-                                    Sign up
-                                </a>
+                                {/* Don&apos;t have an account?{" "} */}
+                                {/* <a href="#" className="underline" >Sign up</a> */}
                                 <div className="flex gap-1 mt-2">
                                     <Button size='sm' variant='outline' onClick={() => setLogInForm(normal)} type='button'>cargar usurio normal</Button>
                                     <Button size='sm' variant='outline' onClick={() => setLogInForm(admin)} type='button'>cargar usurio admin</Button>

@@ -16,7 +16,7 @@ export const Header = () => {
 
     return (
         <header className='flex justify-between m-2'>
-            <h1 className='text-2xl'>Documents</h1>
+            <h1 className='text-2xl'>App de Documentos</h1>
             <div className='flex gap-2'>
                 {/* <Link to="/">Home</Link> */}
                 <ModeToggle />
@@ -31,12 +31,12 @@ export const Header = () => {
                             </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Settings</DropdownMenuItem>
-                            <DropdownMenuItem>Support</DropdownMenuItem>
+                            <DropdownMenuItem>Ajustes</DropdownMenuItem>
+                            <DropdownMenuItem>Soporte</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={handleLogOut}>Logout</DropdownMenuItem>
+                            <DropdownMenuItem onClick={handleLogOut}>Cerrar Sesion</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </label>

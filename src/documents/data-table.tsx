@@ -63,7 +63,7 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
         <div>
             <div className="flex justify-between items-center py-3">
                 <Input
-                    placeholder="search..."
+                    placeholder="Digite para buscar en la tabla..."
                     value={globalFiltering}
                     onChange={e => setGlobalFiltering(e.target.value)}
                     className="max-w-sm outline-0"
@@ -111,7 +111,7 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
                         <Button size="sm" className="h-8 gap-1" onClick={() => navigate('/document/create')}>
                             <PlusCircle className="h-3.5 w-3.5" />
                             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                                Add Product
+                                Nuevo Documento
                             </span>
                         </Button>
 
@@ -156,7 +156,7 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
                                 : (
                                     <TableRow>
                                         <TableCell colSpan={columns.length} className="h-24 text-center">
-                                            No results.
+                                            No hay resultados en la tabla
                                         </TableCell>
                                     </TableRow>
                                 )

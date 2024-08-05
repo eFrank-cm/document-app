@@ -41,7 +41,7 @@ interface State {
 export const useDocumentStore = create<State>()(
     persist(
         (set, get) => ({
-            documents: [],
+            documents: documentsData,
 
             createDocument: (newDocument) => {
                 const id = String(Math.floor(Math.random() * 100))

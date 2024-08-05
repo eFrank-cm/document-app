@@ -1,0 +1,72 @@
+[
+    {
+        "id": "per-1",
+        "name": "Elizon Frank",
+        "paternalSurname": "Carcausto",
+        "maternalSurname": "Mamani",
+        "dni": "71788811"
+    },
+    {
+        "id": "per-2",
+        "name": "Daphne Betzaida Yoyci",
+        "paternalSurname": "Carcausto",
+        "maternalSurname": "Mamani",
+        "dni": "71822417"
+    },
+    {
+        "id": "per-3",
+        "name": "Luis Fernando",
+        "paternalSurname": "Martinez",
+        "maternalSurname": "Diaz",
+        "dni": "34567890"
+    },
+    {
+        "id": "per-4",
+        "name": "Ana Lucia",
+        "paternalSurname": "Hernandez",
+        "maternalSurname": "Castro",
+        "dni": "45678901"
+    },
+    {
+        "id": "per-5",
+        "name": "Carlos Alberto",
+        "paternalSurname": "Ramirez",
+        "maternalSurname": "Fernandez",
+        "dni": "56789012"
+    },
+    {
+        "id": "per-6",
+        "name": "Elena Patricia",
+        "paternalSurname": "Sanchez",
+        "maternalSurname": "Torres",
+        "dni": "67890123"
+    },
+    {
+        "id": "per-7",
+        "name": "Miguel Angel",
+        "paternalSurname": "Romero",
+        "maternalSurname": "Mendoza",
+        "dni": "78901234"
+    },
+    {
+        "id": "per-8",
+        "name": "Laura Beatriz",
+        "paternalSurname": "Vargas",
+        "maternalSurname": "Ortega",
+        "dni": "89012345"
+    },
+    {
+        "id": "per-9",
+        "name": "Ricardo Javier",
+        "paternalSurname": "Gutierrez",
+        "maternalSurname": "Nunez",
+        "dni": "90123456"
+    },
+    {
+        "id": "per-10",
+        "name": "Gabriela Sofia",
+        "paternalSurname": "Rojas",
+        "maternalSurname": "Alvarez",
+        "dni": "01234567"
+    }
+]

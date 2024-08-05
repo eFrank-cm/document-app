@@ -3,7 +3,6 @@ import { Header } from "../components/Header"
 import { DocumentForm } from "./form"
 import { useDocumentStore } from "../store/documentStore"
 
-
 export const DocumentFormPage = () => {
     const { id } = useParams()
     const getDocumentById = useDocumentStore(st => st.getDocumentById)
@@ -16,11 +15,10 @@ export const DocumentFormPage = () => {
             {
                 document
                     ? <DocumentForm document={document} />
-                    :  id === 'create'
+                    : id === 'create'
                         ? <DocumentForm />
                         : <div>El documento no existe {id}</div>
             }
-
         </main>
     )
 }

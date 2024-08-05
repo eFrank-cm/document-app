@@ -1,13 +1,13 @@
-// import personsJSON from './../../public/persons.json'
+import personsJSON from './../../public/persons.json'
 import { Person, PersonId, PersonWithId } from "../types";
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware'
 
 // ---------------------------------------------- SERIALIZAR ----------------------------------------------
-// const personsData: PersonWithId[] = personsJSON.map(person => ({
-//     ...person,
-//     id: person.id as PersonId
-// }))
+const personsData: PersonWithId[] = personsJSON.map(person => ({
+    ...person,
+    id: person.id as PersonId
+}))
 
 // ---------------------------------------------- STORE ----------------------------------------------
 interface State {
@@ -19,7 +19,7 @@ interface State {
 export const usePersonStore = create<State>()(
     persist(
         (set, get) => ({
-            persons: [],
+            persons: personsData,
             createPerson: (newPerson) => {
                 const id: PersonId = `per-${Math.floor(100 + Math.random() * 900)}`
                 set({ persons: [...get().persons, { id, ...newPerson }] })

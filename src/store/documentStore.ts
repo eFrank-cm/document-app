@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { persist, PersistStorage } from 'zustand/middleware'
 import { Document, DocumentWithId } from "../types";
-// import documentsJSON from './../../public/documents.json'
-// import { PersonId, DocumentType } from "../types"
+import documentsJSON from './../../public/documents.json'
+import { PersonId, DocumentType } from "../types"
 
 // ---------------------------------------------- SERIALIZAR ----------------------------------------------
-// const documentsData: DocumentWithId[] = documentsJSON.map(document => ({
-//     ...document,
-//     date: new Date(document.date),
-//     type: document.type as DocumentType,
-//     peopleInDoc: document.peopleInDoc as PersonId[]
-// }))
+const documentsData: DocumentWithId[] = documentsJSON.map(document => ({
+    ...document,
+    date: new Date(document.date),
+    type: document.type as DocumentType,
+    peopleInDoc: document.peopleInDoc as PersonId[]
+}))
 
 // ---------------------------------------------- STORE ----------------------------------------------
 const customStore: PersistStorage<State> = {

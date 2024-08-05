@@ -1,0 +1,311 @@
+[
+    {
+        "id": "doc-1",
+        "title": "CERTIFICADO DE INGLES BASICO",
+        "date": "2023-02-13",
+        "type": "other",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-1"
+        ],
+        "keywords": [
+            "certificado de estudios",
+            "ingles",
+            "UNSAAC"
+        ],
+        "abstract": "Certificado de estudios de un estudiante de la UNSAAC."
+    },
+    {
+        "id": "doc-2",
+        "title": "DECLARACION JURADA DE NO TENER ANTECEDENTES PENALES NI JUDICIALES",
+        "date": "2023-02-20",
+        "type": "other",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-1"
+        ],
+        "keywords": [
+            "declaracion jurada",
+            "antecedentes penales"
+        ],
+        "abstract": "Declaracion jurada sobre antecedentes penales y judiciales necesario para postular al puesto de coodinador"
+    },
+    {
+        "id": "doc-3",
+        "title": "SOLICITUD CONSTANCIA DE ESTUDIOS PRONABEC",
+        "date": "2024-07-24",
+        "type": "other",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-2"
+        ],
+        "keywords": [
+            "solicitud",
+            "constancia de estudios",
+            "PRONABEC"
+        ],
+        "abstract": "Solicitud de constancia de estudios para optar una beca de PRONABEC."
+    },
+    {
+        "id": "doc-4",
+        "title": "Informe Financiero",
+        "date": "2023-04-05",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-5",
+            "per-6"
+        ],
+        "keywords": [
+            "finanzas",
+            "informe"
+        ],
+        "abstract": "Informe financiero del primer trimestre."
+    },
+    {
+        "id": "doc-5",
+        "title": "memorandum",
+        "date": "2023-05-15",
+        "type": "memorandum",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-7"
+        ],
+        "keywords": [
+            "memo",
+            "comunicación"
+        ],
+        "abstract": "memorandum sobre cambios en la politic de la empresa."
+    },
+    {
+        "id": "doc-6",
+        "title": "report de Investigación",
+        "date": "2023-06-10",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-8",
+            "per-9"
+        ],
+        "keywords": [
+            "investigación",
+            "report"
+        ],
+        "abstract": "Resultados de la investigación realizada en el segundo trimestre."
+    },
+    {
+        "id": "doc-7",
+        "title": "Informe de Auditoría",
+        "date": "2023-07-01",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-10"
+        ],
+        "keywords": [
+            "auditoría",
+            "informe"
+        ],
+        "abstract": "Informe de auditoría anual."
+    },
+    {
+        "id": "doc-8",
+        "title": "proposal de Proyecto",
+        "date": "2023-08-20",
+        "type": "proposal",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-1",
+            "per-2"
+        ],
+        "keywords": [
+            "proyecto",
+            "proposal"
+        ],
+        "abstract": "proposal para un nuevo proyecto de investigación."
+    },
+    {
+        "id": "doc-9",
+        "title": "sduty de Mercado",
+        "date": "2023-09-15",
+        "type": "sduty",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-3"
+        ],
+        "keywords": [
+            "mercado",
+            "sduty"
+        ],
+        "abstract": "sduty de mercado sobre las tendencias actuales."
+    },
+    {
+        "id": "doc-10",
+        "title": "Manual de Usuario",
+        "date": "2023-10-05",
+        "type": "manual",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-4",
+            "per-5"
+        ],
+        "keywords": [
+            "manual",
+            "usuario"
+        ],
+        "abstract": "Manual de usuario para el nuevo sistema implementado."
+    },
+    {
+        "id": "doc-11",
+        "title": "guide de Implementación",
+        "date": "2023-11-20",
+        "type": "guide",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-6"
+        ],
+        "keywords": [
+            "implementación",
+            "guia"
+        ],
+        "abstract": "guide de implementación para el nuevo software."
+    },
+    {
+        "id": "doc-12",
+        "title": "contract de Servicio",
+        "date": "2023-12-10",
+        "type": "contract",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-7"
+        ],
+        "keywords": [
+            "contract",
+            "servicio"
+        ],
+        "abstract": "contract de servicio con la nueva empresa proveedora."
+    },
+    {
+        "id": "doc-13",
+        "title": "regulation Interno",
+        "date": "2023-12-25",
+        "type": "regulation",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-8",
+            "per-9"
+        ],
+        "keywords": [
+            "regulation",
+            "interno"
+        ],
+        "abstract": "regulation interno de la organización."
+    },
+    {
+        "id": "doc-14",
+        "title": "Informe de Sostenibilidad",
+        "date": "2024-01-10",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-10"
+        ],
+        "keywords": [
+            "sostenibilidad",
+            "informe"
+        ],
+        "abstract": "Informe de sostenibilidad del último año."
+    },
+    {
+        "id": "doc-15",
+        "title": "politic de Privacidad",
+        "date": "2024-01-25",
+        "type": "politic",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-1"
+        ],
+        "keywords": [
+            "privacidad",
+            "politic"
+        ],
+        "abstract": "politic de privacidad de datos."
+    },
+    {
+        "id": "doc-16",
+        "title": "sduty de Viabilidad",
+        "date": "2024-02-10",
+        "type": "sduty",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-2",
+            "per-3"
+        ],
+        "keywords": [
+            "viabilidad",
+            "sduty"
+        ],
+        "abstract": "sduty de viabilidad para el nuevo proyecto."
+    },
+    {
+        "id": "doc-17",
+        "title": "report Anual",
+        "date": "2024-02-25",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-4"
+        ],
+        "keywords": [
+            "anual",
+            "report"
+        ],
+        "abstract": "report anual de la organización."
+    },
+    {
+        "id": "doc-18",
+        "title": "Manual de Procedimientos",
+        "date": "2024-03-15",
+        "type": "Manual",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-5"
+        ],
+        "keywords": [
+            "procedimientos",
+            "manual"
+        ],
+        "abstract": "Manual de procedimientos para el nuevo sistema."
+    },
+    {
+        "id": "doc-19",
+        "title": "proposal de Innovación",
+        "date": "2024-04-10",
+        "type": "proposal",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-6"
+        ],
+        "keywords": [
+            "innovación",
+            "proposal"
+        ],
+        "abstract": "proposal de innovación para mejorar los procesos."
+    },
+    {
+        "id": "doc-20",
+        "title": "Informe de Progreso",
+        "date": "2024-04-25",
+        "type": "report",
+        "urlDoc": "",
+        "peopleInDoc": [
+            "per-7",
+            "per-8"
+        ],
+        "keywords": [
+            "progreso",
+            "informe"
+        ],
+        "abstract": "Informe de progreso del proyecto en curso."
+    }
+]

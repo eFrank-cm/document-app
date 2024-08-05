@@ -423,7 +423,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                             <Badge key={index} className="flex items-center justify-between" variant='outline'>
                                                 {keyword}
                                                 <X
-                                                    className="ml-1 w-4 h-4 hover:cursor-pointer"
+                                                    className="ml-1 w-4 h-4 hover:cursor-pointer min-w-4 min-h-4"
                                                     onClick={() => delKeyword(keyword)}
                                                 />
                                             </Badge>

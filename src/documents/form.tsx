@@ -344,7 +344,7 @@ export const DocumentForm: FC<DocumentFormProps> = ({ document }) => {
                                                         <FileText /> {`${documentData.title}.pdf`}
                                                     </label>
                                                     <p className="text-muted-foreground flex items-center">
-                                                        Click <ArrowUp className="w-4 h-4 mx-1" /> para actualizar el archivo PDF
+                                                        Click <ArrowUp className="w-4 h-4 mx-1" /> para subir o actualizar el archivo PDF
                                                     </p>
                                                 </div>
                                             )

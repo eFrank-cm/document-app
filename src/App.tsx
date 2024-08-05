@@ -19,7 +19,7 @@ export const App = () => {
 				{/* <Route path='/register' element={<RegisterPage />} /> */}
 				<Route element={<ProtectedRoutes />} >
 					<Route path='/documents' element={<SearchLocation />} />
-					<Route path='/document/create' element={<DocumentFormPage />} />
+					{/* <Route path='/document/create' element={<DocumentFormPage />} /> */}
 					<Route path='/document/:id' element={<DocumentFormPage />} />
 					<Route path='/:url' />
 				</Route>

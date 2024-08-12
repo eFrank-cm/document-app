@@ -2,7 +2,6 @@ import { FC } from "react"
 import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 import { Button } from "./button"
 import { CalendarIcon } from "lucide-react"
-import { cn } from "../../lib/utils"
 import { Calendar } from "./calendar"
 import { formatDate } from "date-fns"
 

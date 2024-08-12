@@ -63,7 +63,13 @@ export const DetailsForm: FC<DetailsFormProps> = ({ document, preview, setPrevie
                     .catch(err => console.log('hubo un error', err))
             }
         }
+
         setIsEdit(false)
+
+        if (!pdfFile) {
+            alert('Por favor suba un archivo PDF.')
+            setIsEdit(true)
+        }
     }
 
 
@@ -192,6 +198,7 @@ export const DetailsForm: FC<DetailsFormProps> = ({ document, preview, setPrevie
                             style={{ display: 'none' }}
                             onChange={handleFileChange}
                             disabled={!isEdit}
+
                         />
                         <Label className="mb-1 ml-0.5 text-muted-foreground">Archivo PDF</Label>
                         <label

@@ -66,7 +66,7 @@ export const DetailsForm: FC<DetailsFormProps> = ({ document, preview, setPrevie
 
         setIsEdit(false)
 
-        if (!pdfFile && !document) {
+        if (!document && !pdfFile) {
             alert('Por favor suba un archivo PDF.')
             setIsEdit(true)
         }

@@ -144,7 +144,7 @@ export async function editDocument(document: Document, file: File | null) {
         location: document.location,
         file_name: fileName,
         file_path: filePath,
-        keywords: document.keywords
+        keywords: document.keywords.join(KEYWORD_SEPARATOR)
     }
 
     const doc = await updateDocumentById(document.id, objToUpdate)

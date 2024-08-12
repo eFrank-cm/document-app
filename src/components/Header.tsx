@@ -1,17 +1,14 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { ModeToggle } from "./mode-toggle"
 import { Avatar, AvatarFallback } from "./ui/avatar"
-import { useUserStore } from "../store/userStore"
-import { useNavigate } from "react-router-dom"
+import { useAuthStore } from "../store/authStore"
 
 export const Header = () => {
-    const user = useUserStore(st => st.user)
-    const logout = useUserStore(st => st.logout)
-    const navigate = useNavigate()
+    const user = useAuthStore(st => st.user)
+    const logout = useAuthStore(st => st.logout)
 
     function handleLogOut() {
         logout()
-        navigate('/login')
     }
 
     return (
@@ -19,10 +16,9 @@ export const Header = () => {
             <h1 className='text-2xl'>App de Documentos</h1>
             <div className='flex gap-2'>
                 {/* <Link to="/">Home</Link> */}
-                <ModeToggle />
 
                 <label className='ml-5 flex gap-2 items-center'>
-                    {user?.username}
+                    {user?.email}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Avatar className=''>
@@ -39,6 +35,8 @@ export const Header = () => {
                             <DropdownMenuItem onClick={handleLogOut}>Cerrar Sesion</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
+                    <ModeToggle />
+
                 </label>
 
 

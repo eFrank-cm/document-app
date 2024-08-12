@@ -1,70 +1,35 @@
-import { DocumentTypes } from "./constants"
+import { DOCUMENT_TYPES } from "./constants"
 
+// -------------------------------------- DOCUMENT ---------------------------------------------
+export type DocumentType = keyof typeof DOCUMENT_TYPES
+export interface Document {
+    id: string,
+    createAt: Date,
+    name: string,
+    subject: string,
+    date: Date, // emision date from the document
+    location: string,
+    filePath: string,
+    fileName: string,
+    keywords: string[], // separated by '||'
+    persons: Person[]
+}
+
+// -------------------------------------- PERSON ---------------------------------------------
+export type PersonId = `per-${number}`
 export interface Person {
+    id: string
     name: string,
     paternalSurname: string,
     maternalSurname: string,
     dni: string,
 }
-export type PersonId = `per-${number}`
-export interface PersonWithId extends Person {
-    id: PersonId
-}
 
-export type DocumentType = keyof typeof DocumentTypes
-export interface Document {
-    title: string,
-    date: Date,
-    type: DocumentType,
-    urlDoc: string,
-    abstract: string,
-    keywords: string[],
-    peopleInDoc: PersonId[]
-}
-export interface DocumentWithId extends Document {
-    id: string
-}
-
+// -------------------------------------- USER ---------------------------------------------
+export type Role = 'admin' | 'consultor'
 export interface User {
-    username: string,
-    email: string,
-    password: string
-    type: 'admin' | 'normal'
+    id: string
+    email: string
+    token: string
+    role: Role
 }
-
-// export interface Item {
-//     id: number,
-//     name: string,
-//     subject: string, // asuntp
-//     createAt: Date // de prueba, el createAt de la primera mark deberia ser
-// }
-
-// export interface Track {
-//     id: number,
-//     type: "original" | "copy",
-//     itemId: number
-// }
-
-// export interface Mark {
-//     id: number,
-//     location: string,
-//     createAt: Date,
-//     isHere: boolean, // de prueba
-//     trackId: number
-// }
-
-// export interface Instance extends Mark {
-//     type: 'original' | 'copy',
-// }
-
-// export interface ItemSet extends Item {
-//     instances: Instance[]
-// }
-
-
-// export interface Payment {
-//     id: string,
-//     amount: number,
-//     status: "pending" | "processing" | "success" | "failed",
-//     email: string
-// }

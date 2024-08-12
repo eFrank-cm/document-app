@@ -1,36 +1,40 @@
-// import { ChangeEvent, useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { getFileFromDexie } from "../services/fileService";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { getUrlFromPDF } from "../services/services";
 
-// export const ViewPDF = () => {
-//     const { url } = useParams()
-//     console.log(url)
-//     const pdfUrl = `/src/documents/media/DJ.pdf`;
+export const ViewPDF = () => {
+    const { url } = useParams()
+    // const location = useLocation()
+    // console.log(location.state)
+    // const { filePath } = location.state
+    const [pdfURL, setPdfURL] = useState<string | null>('')
+    const navigate = useNavigate()
 
-//     const [preview, setPreview] = useState<string | null>('')
-//     const fileId = '2'
 
-//     useEffect(() => {
-//         const loadFile = async () => {
-//             const fileBlob = await getFileFromDexie(fileId)
-//             if (fileBlob) {
-//                 const fileURL = URL.createObjectURL(fileBlob)
-//                 setPreview(fileURL)
-//             }
-//         }
+    useEffect(() => {
+        if (url) {
+            getUrlFromPDF(url)
+                .then(res => setPdfURL(res.signedUrl))
+                .catch(err => {
+                    navigate('/documents')
+                    console.log(err)
+                })
+        }
+    }, [])
 
-//         loadFile()
-//     }, [fileId])
-
-//     return (
-//         <main style={{ width: '100%', height: '100vh' }}>
-//             <iframe
-//                 src={preview}
-//                 width="100%"
-//                 height="100%"
-//                 style={{ border: 'none' }}
-//                 title="PDF Viewer"
-//             />
-//         </main>
-//     )
-// }
+    return (
+        <main style={{ width: '100%', height: '100vh' }}>
+            {pdfURL
+                && (
+                    <iframe
+                        src={pdfURL}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 'none' }}
+                        title="PDF Viewer"
+                    />
+                )
+            }
+        </main>
+    )
+}

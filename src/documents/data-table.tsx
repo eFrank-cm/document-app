@@ -7,6 +7,7 @@ import { Button } from "../components/ui/button";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
 import { ListFilter, PlusCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -20,6 +21,7 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
     const [globalFiltering, setGlobalFiltering] = useState("")
     const [columnFiltering, setColumnFiltering] = useState<ColumnFiltersState>([])
     const navigate = useNavigate()
+    const role = useAuthStore(st => st.user?.role)
 
     const table = useReactTable({
         data,
@@ -108,13 +110,14 @@ export const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData
                             </DropdownMenuContent>
                         </DropdownMenu>
 
-                        <Button size="sm" className="h-8 gap-1" onClick={() => navigate('/document/create')}>
-                            <PlusCircle className="h-3.5 w-3.5" />
-                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                                Nuevo Documento
-                            </span>
-                        </Button>
-
+                        {role === 'admin' && (
+                            <Button size="sm" className="h-8 gap-1" onClick={() => navigate('/document/create')}>
+                                <PlusCircle className="h-3.5 w-3.5" />
+                                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                                    Nuevo Documento
+                                </span>
+                            </Button>
+                        )}
                     </div>
 
                 </div>

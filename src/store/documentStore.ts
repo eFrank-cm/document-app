@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist, PersistStorage } from 'zustand/middleware'
-import { Document, DocumentWithId } from "../types";
+import { Document } from "../types";
 // import documentsJSON from './../../public/documents.json'
 // import { PersonId, DocumentType } from "../types"
 
@@ -32,8 +32,8 @@ const customStore: PersistStorage<State> = {
 }
 
 interface State {
-    documents: DocumentWithId[],
-    getDocumentById: (id: string) => DocumentWithId | undefined,
+    documents: Document[],
+    getDocumentById: (id: string) => Document | undefined,
     editDocumentById: (id: string, data: Document) => void,
     createDocument: (newDocument: Document) => string,
     delDocumentById: (id: string) => void
@@ -45,9 +45,10 @@ export const useDocumentStore = create<State>()(
             documents: [],
 
             createDocument: (newDocument) => {
-                const id = String(Math.floor(Math.random() * 100))
-                set({ documents: [...get().documents, { id, ...newDocument }] })
-                return id
+                const { id, ...data } = newDocument
+                const newId = String(Math.floor(Math.random() * 100))
+                set({ documents: [...get().documents, { id: newId, ...data }] })
+                return newId
             },
 
             editDocumentById: (id, data) => set({

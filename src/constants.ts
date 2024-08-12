@@ -1,6 +1,6 @@
 export const MONTHS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 
-export const DocumentTypes = {
+export const DOCUMENT_TYPES = {
     report: "Reporte",
     acta: "Acta",
     plan: "Plan",
@@ -15,3 +15,4 @@ export const DocumentTypes = {
     other: "Other"
 }
 
+export const KEYWORD_SEPARATOR = '||'

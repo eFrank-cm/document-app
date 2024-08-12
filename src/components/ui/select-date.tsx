@@ -24,7 +24,7 @@ export const SelectDate: FC<SelectDateProps> = ({ date, disabled, OnSelectDate, 
                     variant='outline'
                     disabled={disabled}
                     type='button'
-                    className={cn("pl-3 text-left font-normal flex justify-between", !date && 'text-muted-foreground')}
+                    className="pl-3 text-left font-normal flex justify-between disabled:border-transparent"
                 >
                     {date
                         ? formatDate(date, 'PPP')

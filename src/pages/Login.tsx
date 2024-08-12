@@ -1,38 +1,24 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
-import { User } from "../types";
-import { useUserStore } from "../store/userStore";
+import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
 
-const admin: User = {
-    username: 'Admin',
-    email: 'admin@gmail.com',
-    password: '123456',
-    type: 'admin',
+
+interface loginFields {
+    email: string
+    password: string
 }
 
-const normal: User = {
-    username: 'User',
-    email: 'normal@gmail.com',
-    password: '123456',
-    type: 'normal',
-}
+const initialState: loginFields = { email: '', password: '' }
 
-const initialState: User = { username: '', email: '', password: '', type: 'normal' }
 
 export const LoginPage = () => {
-    const user = useUserStore(st => st.user)
-    const navigate = useNavigate()
-
-    const login = useUserStore(st => st.login)
-    const [loginForm, setLogInForm] = useState<User>(initialState)
+    const [loginForm, setLogInForm] = useState<loginFields>(initialState)
     const { email, password } = loginForm
-
-    useEffect(() => {
-        if (user) navigate('/documents')
-    }, [])
+    const login = useAuthStore(st => st.login)
+    const navigate = useNavigate()
 
     function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
         const { id, value } = event.target
@@ -42,14 +28,14 @@ export const LoginPage = () => {
         }))
     }
 
-    function handleOnSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleLogIn(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        login(loginForm)
-        navigate('/documents')
-        // console.log(JSON.stringify(loginForm) === JSON.stringify(correctAcount))
-        // if (JSON.stringify(loginForm) === JSON.stringify(correctAcount)) {
-        //     navigate('/search-location')
-        // }
+        try {
+            await login(email, password) // here there are a 'throw'
+            navigate('/documents')
+        } catch (error) {
+            console.log('Error logging in: ', error)
+        }
     }
 
     return (
@@ -64,7 +50,7 @@ export const LoginPage = () => {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form onSubmit={handleOnSubmit}>
+                        <form onSubmit={handleLogIn}>
                             <div className="grid gap-4">
                                 <div className="grid gap-2">
                                     <label htmlFor="email">Correo Electronico</label>
@@ -96,10 +82,10 @@ export const LoginPage = () => {
                             <div className="mt-4 text-center text-sm">
                                 {/* Don&apos;t have an account?{" "} */}
                                 {/* <a href="#" className="underline" >Sign up</a> */}
-                                <div className="flex gap-1 mt-2">
+                                {/* <div className="flex gap-1 mt-2">
                                     <Button size='sm' variant='outline' onClick={() => setLogInForm(normal)} type='button'>cargar usurio normal</Button>
                                     <Button size='sm' variant='outline' onClick={() => setLogInForm(admin)} type='button'>cargar usurio admin</Button>
-                                </div>
+                                </div> */}
                             </div>
                         </form>
                     </CardContent>
